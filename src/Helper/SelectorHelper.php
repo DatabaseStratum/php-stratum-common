@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace SetBased\Stratum\Helper;
+namespace SetBased\Stratum\Common\Helper;
 
 /**
  * Utility class for selecting/filtering paths against patterns.
