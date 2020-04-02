@@ -1,10 +1,9 @@
 /.idea/
 /.phpunit.result.cache
+/bin/
 /composer.lock
 /test/coverage.xml
 /test/etc/routines.json
 /test/etc/stratum.cfg
 /test/report/
 /vendor/
-
-
