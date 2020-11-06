@@ -6,6 +6,8 @@
   "license": "MIT",
   "require": {
     "php": ">=7.3",
+    "ext-mbstring": "*",
+    "antlr/antlr4-php-runtime": "^0.4.0",
     "setbased/exception": "^2.1"
   },
   "require-dev": {

@@ -1,3 +1,8 @@
+filter:
+  dependency_paths:
+    - "src/Antlr/"
+    - "vendor/"
+
 build:
   tests:
     override:

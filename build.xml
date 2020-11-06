@@ -1,16 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="php-stratum-common" default="build" basedir=".">
-    <target name="build">
-        <echo message="noting to do."/>
-    </target>
+    <property name="ANTLR4" value="/usr/local/lib/antlr-4.8-complete.jar"/>
 
     <!-- Run composer update -->
     <target name="update">
         <exec command="composer update" checkreturn="true" passthru="true"/>
     </target>
 
+    <target name="antlr">
+        <exec executable="java" passthru="true" checkreturn="true">
+            <arg value="-jar"/>
+            <arg value="${ANTLR4}"/>
+            <arg value="-Dlanguage=PHP"/>
+            <arg value="-visitor"/>
+            <arg value="-no-listener"/>
+            <arg value="-package"/>
+            <arg value="SetBased\\Stratum\\Common\\Antlr"/>
+            <arg value="src/Antlr/DocBlockLexer.g4"/>
+        </exec>
+        <exec executable="java" passthru="true" checkreturn="true">
+            <arg value="-jar"/>
+            <arg value="${ANTLR4}"/>
+            <arg value="-Dlanguage=PHP"/>
+            <arg value="-visitor"/>
+            <arg value="-no-listener"/>
+            <arg value="-package"/>
+            <arg value="SetBased\\Stratum\\Common\\Antlr"/>
+            <arg value="src/Antlr/DocBlockParser.g4"/>
+        </exec>
+    </target>
+
     <!-- Runs all unit tests -->
     <target name="unit">
         <exec command="bin/phpunit" passthru="true" checkreturn="true"/>
+    </target>
+
+    <target name="build">
+        <echo message="noting to do."/>
     </target>
 </project>
