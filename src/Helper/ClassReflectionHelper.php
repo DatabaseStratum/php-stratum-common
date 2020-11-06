@@ -9,7 +9,7 @@ use SetBased\Exception\RuntimeException;
 /**
  * Utility class for finding the source of a class.
  */
-class ReflectionClassHelper
+class ClassReflectionHelper
 {
   //--------------------------------------------------------------------------------------------------------------------
   /**
