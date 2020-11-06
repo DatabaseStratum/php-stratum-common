@@ -12,7 +12,7 @@ class DocBlockHelper
   /**
    * Map from tag name to the expected number of parameters for that tag.
    *
-   * @var array[string,int]
+   * @var array<string,int>
    */
   private static $tagParameters = [];
 

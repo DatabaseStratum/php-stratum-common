@@ -6,6 +6,7 @@ namespace SetBased\Stratum\Common\DocBlock;
 use Antlr\Antlr4\Runtime\Tree\ParseTree;
 use Antlr\Antlr4\Runtime\Tree\TerminalNode;
 use SetBased\Exception\FallenException;
+use SetBased\Helper\Cast;
 use SetBased\Stratum\Common\Antlr\Context;
 use SetBased\Stratum\Common\Antlr\DocBlockParserBaseVisitor;
 use SetBased\Stratum\Common\Helper\DocBlockHelper;
@@ -262,7 +263,7 @@ class DocBlockVisitor extends DocBlockParserBaseVisitor
    */
   public function visitTerminal(TerminalNode $node): string
   {
-    return $node->getText();
+    return Cast::toManString($node->getText());
   }
 
   //--------------------------------------------------------------------------------------------------------------------
