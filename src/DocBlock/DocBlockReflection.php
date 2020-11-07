@@ -72,11 +72,30 @@ class DocBlockReflection
   //--------------------------------------------------------------------------------------------------------------------
   /**
    * Returns the tags as an array.
+   *
+   * @param string|null $filter If not null only tags with name equal to this filter are returns.
+   *
+   * @return array
    */
-  public function getTags(): array
+  public function getTags(?string $filter=null): array
   {
-    return $this->visitor->getTags();
+    if ($filter===null)
+    {
+      return $this->visitor->getTags();
+    }
+
+    $ret = [];
+    foreach ($this->visitor->getTags() as $tag)
+    {
+      if ($tag['tag']===$filter)
+      {
+        $ret[] = $tag;
+      }
+    }
+
+    return $ret;
   }
+
   //--------------------------------------------------------------------------------------------------------------------
   /**
    * Reflect a DocBlock.

@@ -51,13 +51,13 @@ class DocBlockReflectionTest extends TestCase
 
     $reflection = new DocBlockReflection($docBlock);
 
-    self::assertEquals(['This is a shot description.'], $reflection->getShortDescription());
-    self::assertEquals(['The is a long description of one line.',
+    self::assertSame(['This is a shot description.'], $reflection->getShortDescription());
+    self::assertSame(['The is a long description of one line.',
                         'This is line 2.',
                         '',
                         'This is line 1 of second paragraph with wrong indentation.'],
                        $reflection->getLongDescription());
-    self::assertEquals([['tag'         => 'param',
+    self::assertSame([['tag'         => 'param',
                          'arguments'   => ['p1'],
                          'description' => ['Description 1']],
                         ['tag'         => 'param',
@@ -70,6 +70,9 @@ class DocBlockReflectionTest extends TestCase
                         ['tag'         => 'todo',
                          'arguments'   => [],
                          'description' => ['Todo ...']]], $reflection->getTags());
+    self::assertSame([['tag'         => 'todo',
+                         'arguments'   => [],
+                         'description' => ['Todo ...']]], $reflection->getTags('todo'));
   }
 
   //--------------------------------------------------------------------------------------------------------------------
@@ -94,9 +97,9 @@ class DocBlockReflectionTest extends TestCase
 
     $reflection = new DocBlockReflection($docBlock);
 
-    self::assertEquals(['Test for designation type row0 with BLOB.'], $reflection->getShortDescription());
-    self::assertEquals([], $reflection->getLongDescription());
-    self::assertEquals([['tag'         => 'param',
+    self::assertSame(['Test for designation type row0 with BLOB.'], $reflection->getShortDescription());
+    self::assertSame([], $reflection->getLongDescription());
+    self::assertSame([['tag'         => 'param',
                          'arguments'   => ['p_count'],
                          'description' => ['The number of rows selected.',
                                            '* 0 For a valid test.',
@@ -105,6 +108,8 @@ class DocBlockReflectionTest extends TestCase
                         ['tag'         => 'param',
                          'arguments'   => ['p_blob'],
                          'description' => ['The BLOB.']]], $reflection->getTags());
+    self::assertSame([], $reflection->getTags('todo'));
+
   }
 
   //--------------------------------------------------------------------------------------------------------------------
@@ -119,9 +124,9 @@ class DocBlockReflectionTest extends TestCase
   {
     $reflection = new DocBlockReflection($docBlock);
 
-    self::assertEquals([], $reflection->getShortDescription(), $docBlock);
-    self::assertEquals([], $reflection->getLongDescription(), $docBlock);
-    self::assertEquals([], $reflection->getTags(), $docBlock);
+    self::assertSame([], $reflection->getShortDescription(), $docBlock);
+    self::assertSame([], $reflection->getLongDescription(), $docBlock);
+    self::assertSame([], $reflection->getTags(), $docBlock);
   }
 
   //--------------------------------------------------------------------------------------------------------------------
@@ -140,9 +145,9 @@ class DocBlockReflectionTest extends TestCase
 
     $reflection = new DocBlockReflection($docBlock);
 
-    self::assertEquals(['This is a shot description.'], $reflection->getShortDescription());
-    self::assertEquals(['The is a long description of one line.'], $reflection->getLongDescription());
-    self::assertEquals([], $reflection->getTags());
+    self::assertSame(['This is a shot description.'], $reflection->getShortDescription());
+    self::assertSame(['The is a long description of one line.'], $reflection->getLongDescription());
+    self::assertSame([], $reflection->getTags());
   }
 
   //--------------------------------------------------------------------------------------------------------------------
@@ -165,13 +170,13 @@ class DocBlockReflectionTest extends TestCase
 
     $reflection = new DocBlockReflection($docBlock);
 
-    self::assertEquals(['This is a shot description.'], $reflection->getShortDescription());
-    self::assertEquals(['The is a long description of one line.',
+    self::assertSame(['This is a shot description.'], $reflection->getShortDescription());
+    self::assertSame(['The is a long description of one line.',
                         'This is line 2.',
                         '',
                         'This is line 1 of second paragraph with wrong indentation.'],
                        $reflection->getLongDescription());
-    self::assertEquals([], $reflection->getTags());
+    self::assertSame([], $reflection->getTags());
   }
 
   //--------------------------------------------------------------------------------------------------------------------
@@ -191,9 +196,9 @@ class DocBlockReflectionTest extends TestCase
 
     $reflection = new DocBlockReflection($docBlock);
 
-    self::assertEquals(['This is a shot description.'], $reflection->getShortDescription());
-    self::assertEquals(['N@sty tag confusion.'], $reflection->getLongDescription());
-    self::assertEquals([], $reflection->getTags());
+    self::assertSame(['This is a shot description.'], $reflection->getShortDescription());
+    self::assertSame(['N@sty tag confusion.'], $reflection->getLongDescription());
+    self::assertSame([], $reflection->getTags());
   }
 
   //--------------------------------------------------------------------------------------------------------------------
@@ -235,9 +240,9 @@ class DocBlockReflectionTest extends TestCase
 
     $reflection = new DocBlockReflection($docBlock);
 
-    self::assertEquals(['This is a shot description.'], $reflection->getShortDescription());
-    self::assertEquals([], $reflection->getLongDescription());
-    self::assertEquals([], $reflection->getTags());
+    self::assertSame(['This is a shot description.'], $reflection->getShortDescription());
+    self::assertSame([], $reflection->getLongDescription());
+    self::assertSame([], $reflection->getTags());
   }
 
   //--------------------------------------------------------------------------------------------------------------------
@@ -254,9 +259,9 @@ class DocBlockReflectionTest extends TestCase
 
     $reflection = new DocBlockReflection($docBlock);
 
-    self::assertEquals(['This is a shot description.'], $reflection->getShortDescription());
-    self::assertEquals([], $reflection->getLongDescription());
-    self::assertEquals([], $reflection->getTags());
+    self::assertSame(['This is a shot description.'], $reflection->getShortDescription());
+    self::assertSame([], $reflection->getLongDescription());
+    self::assertSame([], $reflection->getTags());
   }
 
   //--------------------------------------------------------------------------------------------------------------------
