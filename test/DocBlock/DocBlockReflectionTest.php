@@ -114,6 +114,29 @@ class DocBlockReflectionTest extends TestCase
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
+   * Test DocBlock with short and long description, and tags.
+   */
+  public function testParams(): void
+  {
+    $docBlock = <<< EOT
+    /**
+     * @param int p_count This an integer or int for short.
+     */
+    EOT;
+
+    DocBlockReflection::setTagParameters('param', 2);
+
+    $reflection = new DocBlockReflection($docBlock);
+
+    self::assertSame([['tag'         => 'param',
+                       'arguments'   => ['int', 'p_count'],
+                       'description' => ['This an integer or int for short.']]], $reflection->getTags());
+    self::assertSame([], $reflection->getTags('todo'));
+
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
    * Test empty DocBlock.
    *
    * @param string $docBlock

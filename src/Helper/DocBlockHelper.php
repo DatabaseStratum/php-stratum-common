@@ -17,6 +17,7 @@ class DocBlockHelper
   private static $tagParameters = [];
 
   //--------------------------------------------------------------------------------------------------------------------
+
   /**
    * Extract the tag, its parameters, and description from raw data.
    *
@@ -39,15 +40,17 @@ class DocBlockHelper
       $tag['arguments'][] = (!empty($parts)) ? array_shift($parts) : '';
     }
 
-    $line0 = $lines[0];
-    $count = 1;
-    $line0 = str_replace('@'.$tag['tag'], str_repeat(' ', mb_strlen($tag['tag']) + 1), $line0, $count);
+    $find    = '@'.$tag['tag'];
+    $replace = str_repeat(' ', mb_strlen($find));
+    $pattern = '/'.preg_quote($find, '/').'/';
+    $line0   = preg_replace($pattern, $replace, $lines[0], 1);
     foreach ($tag['arguments'] as $param)
     {
       if ($param!=='')
       {
-        $count = 1;
-        $line0 = str_replace($param, str_repeat(' ', mb_strlen($param)), $line0, $count);
+        $replace = str_repeat(' ', mb_strlen($param));
+        $pattern = '/'.preg_quote($param, '/').'/';
+        $line0   = preg_replace($pattern, $replace, $line0, 1);
       }
     }
     $lines[0] = $line0;
