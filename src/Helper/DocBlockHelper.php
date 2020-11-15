@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace SetBased\Stratum\Common\Helper;
 
 /**
- * Utility class for processing parts of  DocBlock.
+ * Utility class for processing parts of a DocBlock.
  */
 class DocBlockHelper
 {
