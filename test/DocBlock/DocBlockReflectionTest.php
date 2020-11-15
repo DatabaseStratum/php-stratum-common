@@ -47,7 +47,7 @@ class DocBlockReflectionTest extends TestCase
      */
     EOT;
 
-    DocBlockReflection::setTagParameters('param', 1);
+    DocBlockReflection::setTagParameters('param', ['name']);
 
     $reflection = new DocBlockReflection($docBlock);
 
@@ -58,14 +58,14 @@ class DocBlockReflectionTest extends TestCase
                         'This is line 1 of second paragraph with wrong indentation.'],
                        $reflection->getLongDescription());
     self::assertSame([['tag'         => 'param',
-                         'arguments'   => ['p1'],
+                         'arguments'   => ['name' => 'p1'],
                          'description' => ['Description 1']],
                         ['tag'         => 'param',
-                         'arguments'   => ['p2'],
+                         'arguments'   => ['name' => 'p2'],
                          'description' => ['Description 2',
                                            'On multiple lines.']],
                         ['tag'         => 'param',
-                         'arguments'   => ['p3'],
+                         'arguments'   => ['name' => 'p3'],
                          'description' => ['Description 3']],
                         ['tag'         => 'todo',
                          'arguments'   => [],
@@ -93,20 +93,20 @@ class DocBlockReflectionTest extends TestCase
      */
     EOT;
 
-    DocBlockReflection::setTagParameters('param', 1);
+    DocBlockReflection::setTagParameters('param', ['name']);
 
     $reflection = new DocBlockReflection($docBlock);
 
     self::assertSame(['Test for designation type row0 with BLOB.'], $reflection->getShortDescription());
     self::assertSame([], $reflection->getLongDescription());
     self::assertSame([['tag'         => 'param',
-                         'arguments'   => ['p_count'],
+                         'arguments'   => ['name' => 'p_count'],
                          'description' => ['The number of rows selected.',
                                            '* 0 For a valid test.',
                                            '* 1 For a valid test.',
                                            '* 2 For a invalid test.']],
                         ['tag'         => 'param',
-                         'arguments'   => ['p_blob'],
+                         'arguments'   => ['name' => 'p_blob'],
                          'description' => ['The BLOB.']]], $reflection->getTags());
     self::assertSame([], $reflection->getTags('todo'));
 
@@ -124,12 +124,12 @@ class DocBlockReflectionTest extends TestCase
      */
     EOT;
 
-    DocBlockReflection::setTagParameters('param', 2);
+    DocBlockReflection::setTagParameters('param', ['type', 'name']);
 
     $reflection = new DocBlockReflection($docBlock);
 
     self::assertSame([['tag'         => 'param',
-                       'arguments'   => ['int', 'p_count'],
+                       'arguments'   => ['type' => 'int', 'name' => 'p_count'],
                        'description' => ['This an integer or int for short.']]], $reflection->getTags());
     self::assertSame([], $reflection->getTags('todo'));
 

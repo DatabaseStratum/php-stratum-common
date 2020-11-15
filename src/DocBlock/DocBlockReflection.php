@@ -37,14 +37,14 @@ class DocBlockReflection
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Set the expected number of parameter of a tag
+   * Sets the names of the parameters of a tag.
    *
-   * @param string $tagName            The name of the taf.
-   * @param int    $numberOfParameters The expected number of parameters.
+   * @param string   $tagName The name of the tag.
+   * @param string[] $names   The names of the parameters.
    */
-  public static function setTagParameters(string $tagName, int $numberOfParameters): void
+  public static function setTagParameters(string $tagName, array $names): void
   {
-    DocBlockHelper::setTagParameters($tagName, $numberOfParameters);
+    DocBlockHelper::setTagParameters($tagName, $names);
   }
 
   //--------------------------------------------------------------------------------------------------------------------

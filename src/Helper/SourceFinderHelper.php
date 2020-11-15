@@ -20,7 +20,6 @@ class SourceFinderHelper
   private $basedir;
 
   //--------------------------------------------------------------------------------------------------------------------
-
   /**
    * SourceFinderHelper constructor.
    *

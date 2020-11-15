@@ -17,7 +17,6 @@ class DocBlockHelper
   private static $tagParameters = [];
 
   //--------------------------------------------------------------------------------------------------------------------
-
   /**
    * Extract the tag, its parameters, and description from raw data.
    *
@@ -34,10 +33,10 @@ class DocBlockHelper
             'description' => []];
     array_shift($parts);
 
-    $n = self::$tagParameters[$tag['tag']] ?? 0;
-    for ($i = 0; $i<$n; $i++)
+    $names = self::$tagParameters[$tag['tag']] ?? [];
+    foreach ($names as $name)
     {
-      $tag['arguments'][] = (!empty($parts)) ? array_shift($parts) : '';
+      $tag['arguments'][$name] = (!empty($parts)) ? array_shift($parts) : '';
     }
 
     $find    = '@'.$tag['tag'];
@@ -87,21 +86,21 @@ class DocBlockHelper
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Set the expected number of parameter of a tag
+   * Sets the names of the parameters of a tag.
    *
-   * @param string $tagName            The name of the taf.
-   * @param int    $numberOfParameters The expected number of parameters.
+   * @param string   $tagName The name of the tag.
+   * @param string[] $names   The names of the parameters
    */
-  public static function setTagParameters(string $tagName, int $numberOfParameters): void
+  public static function setTagParameters(string $tagName, array $names): void
   {
     $tagName = ltrim($tagName, '@');
-    if ($numberOfParameters<=0)
+    if (empty($names))
     {
       unset(self::$tagParameters[$tagName]);
     }
     else
     {
-      self::$tagParameters[$tagName] = $numberOfParameters;
+      self::$tagParameters[$tagName] = $names;
     }
   }
 
