@@ -4,7 +4,18 @@
 
     <!-- Run composer update -->
     <target name="update">
-        <exec command="composer update" checkreturn="true" passthru="true"/>
+        <!-- Update PHP packages -->
+        <exec executable="composer" checkreturn="true" passthru="true">
+            <arg value="--ansi"/>
+            <arg value="update"/>
+        </exec>
+
+        <!-- Show outdated PHP packages -->
+        <exec executable="composer" checkreturn="true" passthru="true">
+            <arg value="--ansi"/>
+            <arg value="outdated"/>
+            <arg value="--direct"/>
+        </exec>
     </target>
 
     <target name="antlr">
