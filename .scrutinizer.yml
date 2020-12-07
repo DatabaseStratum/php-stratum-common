@@ -2,11 +2,25 @@ filter:
   dependency_paths:
     - "src/Antlr/"
     - "vendor/"
+  excluded_paths:
+    - 'test/'
 
 build:
-  tests:
-    override:
-      - command: './bin/phing unit'
-        coverage:
-          file:   'test/coverage.xml'
-          format: 'php-clover'
+  environment:
+    php:
+      pecl_extensions:
+        - inotify
+
+  nodes:
+    analysis:
+      tests:
+        override:
+          - php-scrutinizer-run
+
+    coverage:
+      tests:
+        override:
+          - command: './bin/phing unit'
+            coverage:
+              file:   'test/coverage.xml'
+              format: 'php-clover'
