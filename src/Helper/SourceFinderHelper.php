@@ -17,7 +17,7 @@ class SourceFinderHelper
    *
    * @var string
    */
-  private $basedir;
+  private string $basedir;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**

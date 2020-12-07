@@ -21,7 +21,7 @@ class DocBlockReflection
    *
    * @var DocBlockVisitor
    */
-  private $visitor;
+  private DocBlockVisitor $visitor;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**

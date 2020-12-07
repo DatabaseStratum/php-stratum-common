@@ -22,21 +22,21 @@ class DocBlockVisitor extends DocBlockParserBaseVisitor
    *
    * @var array
    */
-  private $longDescription = [];
+  private array $longDescription = [];
 
   /**
    * The short description found in the DocBlock.
    *
    * @var array
    */
-  private $shortDescription = [];
+  private array $shortDescription = [];
 
   /**
    * The tags found in the DocBlock.
    *
    * @var array
    */
-  private $tags = [];
+  private array $tags = [];
 
   //--------------------------------------------------------------------------------------------------------------------
   /**

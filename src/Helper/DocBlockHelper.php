@@ -14,7 +14,7 @@ class DocBlockHelper
    *
    * @var array<string,int>
    */
-  private static $tagParameters = [];
+  private static array $tagParameters = [];
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
