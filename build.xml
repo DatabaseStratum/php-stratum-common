@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="php-stratum-common" default="build" basedir=".">
-    <property name="ANTLR4" value="/usr/local/lib/antlr-4.8-complete.jar"/>
+    <property name="ANTLR4" value="/usr/local/lib/antlr-4.9-complete.jar"/>
 
-    <!-- Run composer update -->
+    <!-- Updates dependencies -->
     <target name="update">
         <!-- Update PHP packages -->
         <exec executable="composer" checkreturn="true" passthru="true">

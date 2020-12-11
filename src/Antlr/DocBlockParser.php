@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Generated from src/Antlr/DocBlockParser.g4 by ANTLR 4.8
+ * Generated from src/Antlr/DocBlockParser.g4 by ANTLR 4.9
  */
 
 namespace SetBased\Stratum\Common\Antlr {
@@ -157,7 +157,7 @@ namespace SetBased\Stratum\Common\Antlr {
 				return;
 			}
 
-			RuntimeMetaData::checkVersion('4.8', RuntimeMetaData::VERSION);
+			RuntimeMetaData::checkVersion('4.9', RuntimeMetaData::VERSION);
 
 			$atn = (new ATNDeserializer())->deserialize(self::SERIALIZED_ATN);
 

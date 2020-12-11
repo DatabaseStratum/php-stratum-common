@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Generated from src/Antlr/DocBlockParser.g4 by ANTLR 4.8
+ * Generated from src/Antlr/DocBlockParser.g4 by ANTLR 4.9
  */
 
 namespace SetBased\Stratum\Common\Antlr;
