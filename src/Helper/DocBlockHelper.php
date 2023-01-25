@@ -20,9 +20,9 @@ class DocBlockHelper
   /**
    * Extract the tag, its parameters, and description from raw data.
    *
-   * @param array $lines The raw data of the tag.
+   * @param string[] $lines The raw data of the tag.
    *
-   * @return array
+   * @return array<string,mixed>
    */
   public static function extractTag(array $lines): array
   {
@@ -63,9 +63,9 @@ class DocBlockHelper
   /**
    * Left trims whitespace of a block of lines. No line is trimmed more than the first line.
    *
-   * @param array $lines The block of lines.
+   * @param string[] $lines The block of lines.
    *
-   * @return array
+   * @return string[]
    */
   public static function leftTrimBlock(array $lines): array
   {
@@ -78,7 +78,7 @@ class DocBlockHelper
     $ret = [];
     foreach ($lines as $line)
     {
-      $ret [] = static::leftTrimMax($line, $diff);
+      $ret[] = self::leftTrimMax($line, $diff);
     }
 
     return $ret;
