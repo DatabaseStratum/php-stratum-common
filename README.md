@@ -24,8 +24,8 @@ Common parts shared between backends for database systems
 <a href="https://packagist.org/packages/setbased/php-stratum-common"><img src="https://poser.pugx.org/setbased/php-stratum-common/v/stable" alt="Latest Stable Version"/></a><br/>
 </td>
 <td>
-<a href="https://github.com/SetBased/php-stratum-common/actions/workflows/unit.yml"><img src="https://github.com/SetBased/php-stratum-common/actions/workflows/unit.yml/badge.svg" alt="Build Status"/></a><br/>
-<a href="https://codecov.io/gh/SetBased/php-stratum-common"><img src="https://codecov.io/gh/SetBased/php-stratum-common/branch/master/graph/badge.svg" alt="Code Coverage"/></a>
+<a href="https://github.com/DatabaseStratum/php-stratum-common/actions/workflows/unit.yml"><img src="https://github.com/DatabaseStratum/php-stratum-common/actions/workflows/unit.yml/badge.svg" alt="Build Status"/></a><br/>
+<a href="https://codecov.io/gh/DatabaseStratum/php-stratum-common"><img src="https://codecov.io/gh/DatabaseStratum/php-stratum-common/branch/master/graph/badge.svg" alt="Code Coverage"/></a>
 </td>
 <td>
 <a href="https://scrutinizer-ci.com/g/DatabaseStratum/php-stratum-common/?branch=master"><img src="https://scrutinizer-ci.com/g/DatabaseStratum/php-stratum-common/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality"/></a>

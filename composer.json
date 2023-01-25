@@ -5,18 +5,18 @@
   ],
   "license": "MIT",
   "require": {
-    "php": ">=7.4",
+    "php": ">=8.1",
     "ext-mbstring": "*",
     "setbased/antlr4-php-runtime": "^0.5.1",
-    "setbased/exception": "^2.2.0",
-    "setbased/helper-cast": "^2.1.2",
-    "setbased/php-stratum-backend": "^5.4.0"
+    "setbased/exception": "^2.3.0",
+    "setbased/helper-cast": "^3.0.0",
+    "setbased/php-stratum-backend": "^5.5.0"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require-dev": {
-    "phing/phing": "^3.0.0-RC3",
-    "phpunit/phpunit": "^9.5.27"
+    "phing/phing": "^3.0.0-RC4",
+    "phpunit/phpunit": "^9.5.28"
   },
   "autoload": {
     "psr-4": {
