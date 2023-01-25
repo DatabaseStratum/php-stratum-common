@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace SetBased\Stratum\Common\Helper;
 
+use FilesystemIterator;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
@@ -99,7 +100,7 @@ class SourceFinderHelper
     $sources = [];
 
     $directory = new RecursiveDirectoryIterator(self::getLeadingDir($pattern));
-    $directory->setFlags(RecursiveDirectoryIterator::FOLLOW_SYMLINKS);
+    $directory->setFlags(FilesystemIterator::FOLLOW_SYMLINKS);
     $files = new RecursiveIteratorIterator($directory);
     foreach ($files as $fullPath => $file)
     {
@@ -149,7 +150,7 @@ class SourceFinderHelper
    */
   private function sourcesToPatterns(string $sources): array
   {
-    if (substr($sources, 0, 5)=='file:')
+    if (str_starts_with($sources, 'file:'))
     {
       $patterns = $this->readPatterns(substr($sources, 5));
     }
