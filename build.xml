@@ -2,20 +2,38 @@
 <project name="php-stratum-common" default="build" basedir=".">
     <property name="ANTLR4" value="/usr/local/lib/antlr-4.9-complete.jar"/>
 
-    <!-- Updates dependencies -->
+    <!-- Run composer update and executes various other updates -->
     <target name="update">
-        <!-- Update PHP packages -->
         <exec executable="composer" checkreturn="true" passthru="true">
             <arg value="--ansi"/>
             <arg value="update"/>
         </exec>
 
-        <!-- Show outdated PHP packages -->
-        <exec executable="composer" checkreturn="true" passthru="true">
+        <phing phingfile="build.xml" target="outdated" haltonfailure="true"/>
+    </target>
+
+    <!-- Show outdated packages -->
+    <target name="outdated">
+        <exec executable="composer" checkreturn="false" passthru="true">
             <arg value="--ansi"/>
             <arg value="outdated"/>
             <arg value="--direct"/>
         </exec>
+    </target>
+
+    <!-- Runs code inspection -->
+    <target name="inspection">
+        <exec executable="bin/phpstan" checkreturn="true" passthru="true">
+            <arg value="--ansi"/>
+            <arg value="analyse"/>
+            <arg value="src"/>
+            <arg value="--level=6"/>
+        </exec>
+    </target>
+
+    <!-- Runs all unit tests -->
+    <target name="unit">
+        <exec executable="bin/phpunit" passthru="true" checkreturn="true"/>
     </target>
 
     <target name="antlr">
@@ -41,12 +59,5 @@
         </exec>
     </target>
 
-    <!-- Runs all unit tests -->
-    <target name="unit">
-        <exec command="bin/phpunit" passthru="true" checkreturn="true"/>
-    </target>
-
-    <target name="build">
-        <echo message="noting to do."/>
-    </target>
+    <target name="build" depends="update,inspection,unit"/>
 </project>
