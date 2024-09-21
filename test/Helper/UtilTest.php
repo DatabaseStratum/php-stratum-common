@@ -40,8 +40,7 @@ class UtilTest extends TestCase
     rewind($output->getStream());
     $display = stream_get_contents($output->getStream());
     $lines   = explode(PHP_EOL, $display);
-    self::assertSame(['',
-                      ' Wrote test/Helper/hello.txt',
+    self::assertSame([' Wrote test/Helper/hello.txt',
                       ' File test/Helper/hello.txt is up to date',
                       ' Wrote test/Helper/hello.txt',
                       ''], $lines);

@@ -15,7 +15,7 @@ class ClassReflectionHelper
   /**
    * Returns the path to the source of a class.
    *
-   * This method differs from PHP's \ReflectionClass::getFileName() that is does not actually load the class.
+   * This method differs from PHP's \ReflectionClass::getFileName() that it does not actually load the class.
    *
    * @param string $className The fully qualified name of the class.
    *

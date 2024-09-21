@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace SetBased\Stratum\Common\Helper;
+namespace SetBased\Stratum\Common\Loader\Helper;
 
 use FilesystemIterator;
 use RecursiveDirectoryIterator;
@@ -44,10 +44,16 @@ class SourceFinderHelper
     $dir = $pattern;
 
     $pos = strpos($dir, '*');
-    if ($pos!==false) $dir = substr($dir, 0, $pos);
+    if ($pos!==false)
+    {
+      $dir = substr($dir, 0, $pos);
+    }
 
     $pos = strpos($dir, '?');
-    if ($pos!==false) $dir = substr($dir, 0, $pos);
+    if ($pos!==false)
+    {
+      $dir = substr($dir, 0, $pos);
+    }
 
     $pos = strrpos($dir, '/');
     if ($pos!==false)
@@ -66,7 +72,7 @@ class SourceFinderHelper
   /**
    * Finds sources of stored routines.
    *
-   * @param string $sources The value of the sources parameter.
+   * @param string $sources The value of the sources' parameter.
    *
    * @return string[]
    */
@@ -144,7 +150,7 @@ class SourceFinderHelper
   /**
    * Converts the sources parameter to a list a patterns.
    *
-   * @param string $sources The value of the sources parameter.
+   * @param string $sources The value of the sources' parameter.
    *
    * @return string[]
    */

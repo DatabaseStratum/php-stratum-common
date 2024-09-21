@@ -2,10 +2,6 @@
 /.phpunit.result.cache
 /bin/
 /composer.lock
-/custom.task.properties
-/custom.type.properties
-/src/Antlr/DocBlockLexer.interp
-/src/Antlr/DocBlockParser.interp
 /test/coverage.xml
 /test/etc/routines.json
 /test/etc/stratum.cfg
