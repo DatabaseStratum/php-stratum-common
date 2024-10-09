@@ -20,6 +20,7 @@ class TypeHintHelper
   private array $typeHints = [];
 
   //--------------------------------------------------------------------------------------------------------------------
+
   /**
    * Adds a type hint with its actual data type.
    *
@@ -167,29 +168,31 @@ class TypeHintHelper
           throw new RoutineLoaderException("Unknown type hint '%s' found at line %d.", $hint, $index + 1);
         }
 
-        if (preg_match('/(?<nullable>not\s+null)?\s*(?<punctuation>\s*[;,]\s*)?$/',
+        if (preg_match('/(?<extra1> not\s+null)?\s*(?<extra2> default.+)?\s*(?<extra3>[;,]\s*)?$/i',
                        $matches['extra'],
                        $other,
                        PREG_UNMATCHED_AS_NULL))
         {
-          $punctuation = $other['punctuation'] ?? '';
-          $nullable    = $other['nullable'] ?? '';
+          $extra1 = $other['extra1'] ?? '';
+          $extra2 = $other['extra2'] ?? '';
+          $extra3 = $other['extra3'] ?? '';
         }
         else
         {
-          $punctuation = '';
-          $nullable    = '';
+          $extra1 = '';
+          $extra2 = '';
+          $extra3 = '';
         }
 
-        $actualType             = $this->typeHints[$hint];
-        $newLine                = sprintf('%s%s%s%s%s%s',
-                                          mb_substr($line, 0, -mb_strlen($matches[0])),
-                                          $matches['whitespace'],
-                                          $actualType, // <== the real replacement
-                                          $nullable,
-                                          $punctuation,
-                                          $matches['hint']);
-        $this->typeHints[$hint] = $actualType;
+        $actualType = $this->typeHints[$hint];
+        $newLine    = sprintf('%s%s%s%s%s%s%s',
+                              mb_substr($line, 0, -mb_strlen($matches[0])),
+                              $matches['whitespace'],
+                              $actualType, // <== the real replacement
+                              $extra1,
+                              $extra2,
+                              $extra3,
+                              $matches['hint']);
 
         if (str_replace(' ', '', $line)!==str_replace(' ', '', $newLine))
         {
