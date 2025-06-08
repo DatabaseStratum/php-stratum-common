@@ -1,8 +1,7 @@
 {
   "name": "setbased/php-stratum-common",
   "description": "PhpStratum Common",
-  "keywords": [
-  ],
+  "keywords": [],
   "license": "MIT",
   "require": {
     "php": ">=8.3",
