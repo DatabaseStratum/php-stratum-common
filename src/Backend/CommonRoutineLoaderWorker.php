@@ -323,7 +323,7 @@ abstract class CommonRoutineLoaderWorker implements RoutineLoaderWorker
   //--------------------------------------------------------------------------------------------------------------------
   /**
    * Drops obsolete stored routines (i.e., stored routines that exit in the current schema but for which we don't have a
-   * source file).
+   * source file) and removes obsolete metadata.
    */
   private function dropObsoleteRoutines(): void
   {
@@ -333,6 +333,7 @@ abstract class CommonRoutineLoaderWorker implements RoutineLoaderWorker
       $inSources[$source['routine_name']] = $source;
     }
 
+    // Drop obsolete routines.
     $obsolete = array_diff_key($this->rdbmsMetadata, $inSources);
     foreach ($obsolete as $routineName => $rdbmsMetadata)
     {
@@ -341,8 +342,10 @@ abstract class CommonRoutineLoaderWorker implements RoutineLoaderWorker
                               $routineName));
 
       $this->dropStoredRoutine($rdbmsMetadata);
-      unset($this->phpStratumMetadata[$routineName]);
     }
+
+    // Drop obsolete metadata.
+    $this->phpStratumMetadata = array_intersect_key($this->phpStratumMetadata, $inSources);
   }
 
   //--------------------------------------------------------------------------------------------------------------------
