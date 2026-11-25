@@ -127,11 +127,16 @@ abstract class CommonRoutineLoader
     $parameters = [];
     foreach ($context->storedRoutine->getParameters() as $parameter)
     {
+      $phpType = $context->dataType->columnTypeToPhpType($parameter);
+      if ($phpType!=='mixed')
+      {
+        $phpType .= '|null';
+      }
       $parameters[] = ['data_type'      => $parameter['data_type'],
                        'dtd_identifier' => $parameter['dtd_identifier'],
                        'description'    => $context->docBlock->getParameterDescription($parameter['parameter_name']),
                        'name'           => $parameter['parameter_name'],
-                       'php_type'       => $context->dataType->columnTypeToPhpType($parameter).'|null'];
+                       'php_type'       => $phpType];
     }
 
     $phpDoc['parameters'] = $parameters;
