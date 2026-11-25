@@ -17,4 +17,13 @@
             <directory>src</directory>
         </include>
     </source>
+
+    <coverage includeUncoveredFiles="true"
+              pathCoverage="false"
+              ignoreDeprecatedCodeUnits="true"
+              disableCodeCoverageIgnore="true">
+        <report>
+            <html outputDirectory="test/report" lowUpperBound="50" highLowerBound="90"/>
+        </report>
+    </coverage>
 </phpunit>
