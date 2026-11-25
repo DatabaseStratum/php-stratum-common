@@ -14,7 +14,7 @@
   },
   "require-dev": {
     "phing/phing": "^3.0.1",
-    "phpunit/phpunit": "^11.5.22"
+    "phpunit/phpunit": "^11.5.58"
   },
   "autoload": {
     "psr-4": {
